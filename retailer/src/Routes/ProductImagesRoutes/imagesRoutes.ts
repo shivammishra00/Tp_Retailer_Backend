@@ -10,6 +10,6 @@ const {updateImage} = require('../../Controller/ProductImages/updateImage/update
 
 ImagesRouter.post("/addimage", upload.single('image'),  addImage)
 ImagesRouter.get("/viewImage/:imageid", viewDescription)
-ImagesRouter.patch("/updateImage/:imageid", updateImage)
+ImagesRouter.patch("/updateImage/:imageid", upload.single('image'),  updateImage)
 
 module.exports = ImagesRouter

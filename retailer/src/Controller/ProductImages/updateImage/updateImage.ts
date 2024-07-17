@@ -3,13 +3,17 @@ import express, {Request, Response} from 'express';
 const connection = require('../../../Model/dbConnected');
 
 
-const updateImage = (req:Request, res:Response) => {
+const updateImage = (req:Request | any, res:Response) => {
     const imageid:string = req.params.imageid;
     if(!imageid){
         return res.json({Error: "imageid is required"})
     }
+    if(!req.file){
+        return res.json({Error: "image is required"})
+    }
+    // console.log(req.file)
     const data:string[] = [
-        req.body.image,
+        req.file.location,
         req.body.description,
         req.body.color,
     ]
