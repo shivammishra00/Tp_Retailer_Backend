@@ -3,13 +3,13 @@ import express, { Request, Response } from "express";
 const connection = require('../../../Model/dbConnected');
 
 const viewDescription = async (req:Request, res:Response)=>{
-    const imageid:string = req.params.imageid;
-    if(!imageid){
-        return res.json({Error: "imageid is required"});
+    const pid:string = req.params.pid;
+    if(!pid){
+        return res.json({Error: "pid is required"});
     }
-    console.log(imageid)
-    const sqlQuery = `SELECT * FROM tbl_retailer_product_images WHERE imageid=?`
-    await connection.query(sqlQuery, [imageid], (err:any, result:any)=>{
+    console.log(pid)
+    const sqlQuery = `SELECT * FROM tbl_retailer_product_images WHERE pid=?`
+    await connection.query(sqlQuery, [pid], (err:any, result:any)=>{
         if(err) return res.json({Status: false, Error: err.sqlMessage, error: "Query Error"})
         else return res.json({Status: true, result})
     })
