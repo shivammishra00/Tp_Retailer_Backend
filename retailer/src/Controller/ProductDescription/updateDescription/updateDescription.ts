@@ -18,6 +18,8 @@ const updateDescription = (req:Request, res:Response) =>{
             req.body.processer,
             req.body.camera,
         ]
+
+        // here apply validation .. update ke liye kuchh ese hi validation apply kar sakte hai loop ki help se ..//
         const fields = ['discription', 'size', 'weight', 'ram', 'rom', 'battery', 'processer', 'camera'];
         for (let i = 0; i < fields.length; i++) {
             if (!data[i]) {
@@ -25,6 +27,8 @@ const updateDescription = (req:Request, res:Response) =>{
             }
         }
         const sqlQuery = `UPDATE tbl_retailer_product_description SET discription=?, size=?, weight=?, ram=?, rom=?, battery=?, processer=?, camera=? WHERE pid=?`;
+
+        console.log(data)
 
         connection.query(sqlQuery, [...data, pid], (err:any, result:any)=>{
             if(err) return res.json({Status: false, Error: err.sqlMessage, error: "Query Error"})

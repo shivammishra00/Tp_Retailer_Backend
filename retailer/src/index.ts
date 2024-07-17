@@ -24,11 +24,14 @@ const verifyRouter = require('./Routes/RetailerRoutes/verifyRoute.ts')
 const productRouter = require('./Routes/ProductRoutes/productRoutes.ts')
 const bankingRouter = require('./Routes/BankingRoutes/bankimgRoutes.ts')
 const descriptionRouter = require('./Routes/ProductDescriptionRoutes/descriptionRoutes.ts')
+const ImagesRouter = require('./Routes/ProductImagesRoutes/imagesRoutes.ts')
+
 app.use("/api/retailer", retailerRouter)
 app.use("/api/retailer", verifyRouter)
 app.use("/api/retailer/product", productRouter)
 app.use("/api/retailer/banking", bankingRouter)
 app.use("/api/retailer/productDescription", descriptionRouter)
+app.use("/api/retailer/productImages", ImagesRouter)
 
 app.listen(port, ()=>{
     console.log(`server is running on ${port} port`)

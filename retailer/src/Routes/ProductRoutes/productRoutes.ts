@@ -3,6 +3,7 @@ import express from "express";
 const {addProduct} = require('../../Controller/Product/addProduct/addProduct')
 const {viewProduct} = require("../../Controller/Product/viewProduct/viewProduct")
 const {updatePrice, updateDiscount, updateQuantity} = require('../../Controller/Product/updateProduct/updateProduct')
+
 const upload = require('../../Routes/RetailerRoutes/multaerImage')
 
 const productRouter = express.Router();
