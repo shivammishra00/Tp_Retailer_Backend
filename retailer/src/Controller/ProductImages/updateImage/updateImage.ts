@@ -37,7 +37,7 @@ const updateImage = async (req:Request | any, res:Response) => {
     const sqlQuery = ` UPDATE tbl_retailer_product_images SET image=?, description=?, color=? WHERE imageid=?`
     await connection.query(sqlQuery, [...data, imageid], (err:any, result:any)=>{
         if(err) return res.json({Status: false, Error: err.sqlMessage, error: "Query Error"})
-        else return res.json({Satus: true, Messge: "Image updated successfully", result})
+        else return res.json({Status: true, Message: "Image updated successfully", result})
     })
     
 }
